@@ -14,7 +14,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-public class Comment {
+public class Comment extends Auditable {
 
     @Id
     @GeneratedValue
