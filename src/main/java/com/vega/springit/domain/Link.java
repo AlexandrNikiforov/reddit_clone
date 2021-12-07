@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import org.yaml.snakeyaml.tokens.CommentToken;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +18,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
+//@Table(name = "link", schema = "springit")
 public class Link extends Auditable {
 
     @Id
@@ -31,6 +32,15 @@ public class Link extends Auditable {
 
     @OneToMany(mappedBy = "link")
     private List<Comment> comments = new ArrayList<>();
+
+    public Link(@NonNull String title, @NonNull String url) {
+        this.title = title;
+        this.url = url;
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
 
     @Override
     public boolean equals(Object o) {

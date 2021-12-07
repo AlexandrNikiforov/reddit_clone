@@ -2,27 +2,40 @@ package com.vega.springit.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Objects;
 
-@NoArgsConstructor
+@Entity
+@RequiredArgsConstructor
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor
+//@Table(name = "comment", schema = "springit")
 public class Comment extends Auditable {
 
     @Id
     @GeneratedValue
     private Long id;
+
+    @NonNull
     private String body;
 
     @ManyToOne
+    @NonNull
     private Link link;
+
+//    public Comment(String body, Link link) {
+//        this.body = body;
+//        this.link = link;
+//    }
 
     @Override
     public String toString() {
