@@ -3,7 +3,7 @@ package com.vega.springit.controller;
 import com.vega.springit.domain.Comment;
 import com.vega.springit.domain.Link;
 import com.vega.springit.repository.CommentRepository;
-import com.vega.springit.repository.LinkRepository;
+import com.vega.springit.service.LinkService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -21,23 +21,23 @@ import java.util.Optional;
 @Controller
 public class LinkController {
 
-    private final LinkRepository linkRepository;
+    private final LinkService linkService;
     private final CommentRepository commentRepository;
 
-    public LinkController(LinkRepository linkRepository, CommentRepository commentRepository) {
-        this.linkRepository = linkRepository;
+    public LinkController(LinkService linkService, CommentRepository commentRepository) {
+        this.linkService = linkService;
         this.commentRepository = commentRepository;
     }
 
     @GetMapping("/")
     public String list(Model model) {
-        model.addAttribute("links", linkRepository.findAll());
+        model.addAttribute("links", linkService.findAll());
         return "link/list";
     }
 
     @GetMapping("/link/{id}")
     public String read(@PathVariable Long id, Model model) {
-        Optional<Link> linkOptional = linkRepository.findById(id);
+        Optional<Link> linkOptional = linkService.findById(id);
         if (linkOptional.isPresent()) {
             Link currentLink = linkOptional.get();
             Comment comment = new Comment();
@@ -65,7 +65,7 @@ public class LinkController {
             model.addAttribute("link", link);
             return "link/submit";
         } else {
-            linkRepository.save(link);
+            linkService.save(link);
             log.info("New link was saved successfully");
             redirectAttributes
                     .addAttribute("id", link.getId())
