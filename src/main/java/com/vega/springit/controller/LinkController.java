@@ -2,10 +2,13 @@ package com.vega.springit.controller;
 
 import com.vega.springit.domain.Comment;
 import com.vega.springit.domain.Link;
+import com.vega.springit.domain.User;
 import com.vega.springit.repository.CommentRepository;
 import com.vega.springit.service.LinkService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -65,6 +68,10 @@ public class LinkController {
             model.addAttribute("link", link);
             return "link/submit";
         } else {
+
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            link.setUser(user);
+
             linkService.save(link);
             log.info("New link was saved successfully");
             redirectAttributes
