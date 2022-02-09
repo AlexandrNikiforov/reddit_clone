@@ -1,64 +1,20 @@
-# Springit
+# The reddit clone - study project
 
-This is a reddit clone built using Spring Boot 2. I created this
-project to show off all the cool features of Spring Boot 2.
+This is a Reddit clone built using Spring Boot 2, Spring Framework 5,
+Spring Data JPA, Spring Security, Hibernate Validation, MySQL, Thymeleaf, Bootstrap.
+The project was built during the course [Getting Started with Spring Boot 2](https://www.udemy.com/course/spring-boot-2/).
 
 ## Getting Started
 
-TODO: How to get started?
+To launch the app define the active profile as 'dev' in IDE's Run/debug configuration.
 
-### Prerequisites
+![img.png](img.png)
 
-TODO: What do they need to get started
-
-### Installing
-
-TODO: Installing
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+To test the account activation process install and launch MailDev on your local machine.
 
 ```
-Give an example
+$ npm install -g maildev
+$ maildev
 ```
+You will receive emails at http://localhost:1080.
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Spring Boot 2](https://projects.spring.io/spring-boot/)
-* [Spring Framework 5](https://projects.spring.io/spring-framework/)
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Authors
-
-* **Dan Vega** - [TheRealDanVega](http://www.therealdanvega.com)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Thank you PurpleBooth for the [README template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
-* Thank you to the Spring Boot team for the awesome software!
